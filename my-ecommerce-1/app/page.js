@@ -1,6 +1,7 @@
 "use client"; // Asegúrate de añadir esta línea
 
-import Image from "next/image";
+
+import Product_insert from "@/components/Product_insert";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -23,27 +24,17 @@ export default function Home() {
         {categoriesNames.map(categoryName => (
           <div key={categoryName}>
             <h2 className="text-2xl capitalize">{categoryName}</h2>
-            {productsInfo.filter(p => p.category === categoryName).map(product => (
-              <div key={product._id}>{product.name}</div>
-            ))}
+            <div className="flex px-9 -mx-6"> 
+              
+              {productsInfo.filter(p => p.category === categoryName).map(product => (
+                <Product_insert key={product._id} product={product} />
+              ))}
+              </div>
           </div>
         ))}
-        <h2 className="text-2xl">Mobiles</h2>
+        
         <div className="py-4">
-          <div className="w-64">
-            <div className="bg-blue-100 p-5 rounded-xl mt-3">
-              <Image src="/products/iphone.png" alt="el_compu" width="1000" height="900" />
-            </div>
-            {/* Nombre del artículo y características de la card */}
-            <div className="mt-2">
-              <h3 className="font-bold text-lg">Iphone 14 Pro</h3>
-            </div>
-            <p className="text-sm mt-1 leading-4">Este artículo consta con las últimas características tecnológicas del mercado</p>
-            <div className="flex mt-1">
-              <div className="text-2xl font-bold grow">$899</div>
-              <button className="bg-emerald-400 text-white py-1 px-3 rounded-xl">+</button>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>
